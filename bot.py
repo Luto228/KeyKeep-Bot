@@ -29,7 +29,7 @@ async def AddAccount(message: types.Message):
     messageSize = message.text.split()
     messageIndecs = len(messageSize)
     if messageIndecs != 4:
-        await message.answer(f'Something went wrong! \nYou must enter: \n/add [service] [password] [login] \n WITHOUT SPACES')
+        await message.answer(f'Something went wrong! \nYou must enter: \n/add [service] [password] [login] \nWITHOUT SPACES')
         return 
     else:
         UsersInfo.execute('INSERT INTO Users VALUES(?, ?, ?, ?)',(
@@ -53,7 +53,7 @@ async def getData(message: types.Message):
         UsersInfo.execute('SELECT * FROM Users WHERE userid = ? AND service = ?', (message.from_user.id, GetSize[1]))
         result = UsersInfo.fetchone()
         if result:
-            await message.answer(f'Your base is: \n service: {GetSize[1]}, password: {result[2]}, login {result[3]}')
+            await message.answer(f'Your base is: \nservice: {GetSize[1]}, password: {result[2]}, login {result[3]}')
         else:
             await message.answer(f"⛔I couldn\'t find your information⛔Make sure you\'ve specified the correct service")
 async def main():
