@@ -51,9 +51,10 @@ async def getData(message: types.Message):
         return
     else:
         UsersInfo.execute('SELECT * FROM Users WHERE userid = ? AND service = ?', (message.from_user.id, GetSize[1]))
-        result = UsersInfo.fetchone()
+        result = UsersInfo.fetchall()
         if result:
-            await message.answer(f'Your base is: \nservice: {GetSize[1]}, password: {result[2]}, login {result[3]}')
+            for account in result:
+                await message.answer(f'👾Service: {account[1]}, 🔑password: {account[2]}, 🧾login: {account[3]}')
         else:
             await message.answer(f"⛔I couldn\'t find your information⛔Make sure you\'ve specified the correct service")
 async def main():
