@@ -24,7 +24,7 @@ db.commit()
 async def start(message: types.Message):
     await message.answer(f'''Hi! \nIn this bot, you can save your account data \nto save, enter: \n/add [service] [Login] [Password]
     \nto get, enter: /get [service]
-    \nto delete serivce, enter: /del [service]
+    \nto delete service, enter: /del [service]
     \nto delete special account, enter: /del [service] [login]
     \n⛔WITHOUT SPACES⛔''')
 
