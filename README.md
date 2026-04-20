@@ -10,19 +10,17 @@
 ## 🛠 Commands
 - `/start` — View the welcome message and basic instructions.
 - `/add [service] [password] [login]` — Add a new entry.
-- `/get [service]` — Retrieve data for a specific service.
+- `/get [service]` — Retrieve all accounts for a specific service.
 
-> [!WARNING]
-> **Important Limitation:**
-> Currently, the bot does not support saving two different passwords for the same service name. If you want to save multiple accounts for the same service (e.g., Steam), use unique identifiers.
+> [!NOTE]
+> **Multiple Accounts Support**:
+> You can now save multiple accounts for the same service (e.g., several Steam accounts). When you use `/get [service]`, the bot will return all accounts associated with that service.
 
-### Example (Current Workaround):
-```text
-/add steam_first 1234 Alex
-/add steam_two 12345 LoveChairs
-```
+## 🔜 Upcoming Features
+In the next update, you will be able to delete accounts using the following commands:
+- `/del [Service]` — Delete **ALL** accounts associated with that service.
+- `/del [Service] [login]` — Delete a **specific** account from that service.
 
-**This is a temporary limitation and will be fixed in an upcoming update!**
 
 ## ⚙️ Installation & Setup
 
