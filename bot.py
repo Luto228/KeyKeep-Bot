@@ -68,17 +68,21 @@ async def getData(message: types.Message):
 async def Delete(message: types.Message):
     DeleteSize = message.text.split()
     DeleteIndecs = len(DeleteSize)
+    
     if DeleteIndecs == 2:
         UsersInfo.execute('DELETE FROM Users WHERE userid = ? AND service = ?', (message.from_user.id, DeleteSize[1]))
-        await message.answer('Your service have been successfully deleted')
-        db.commit()
     elif DeleteIndecs == 3:
         UsersInfo.execute('DELETE FROM Users WHERE userid = ? AND service = ? AND login = ?', (message.from_user.id, DeleteSize[1], DeleteSize[2]))
-        await message.answer('Your account have been successfully deleted')
-        db.commit()
     else:
-        await message.answer(f'''🚫Incorrect spelling! \n/del [Service] - if you want to delete all services 
-        \n/del [Service] [Login] - special account \n⛔WITHOUT SPACES⛔''')
+        await message.answer(f'🚫Incorrect spelling!')
+        return
+
+    if UsersInfo.rowcount > 0:
+        db.commit()
+        await message.answer('✅ Successfully deleted!')
+    else:
+        await message.answer('❌ Data not found! Nothing to delete.')
+        
 async def main():
     await Disp.start_polling(bot)
 
